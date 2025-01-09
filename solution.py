@@ -155,11 +155,11 @@ if __name__ == '__main__':
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
                     move(hero, 'up')
-                if event.key == pygame.K_DOWN:
+                elif event.key == pygame.K_DOWN:
                     move(hero, 'down')
-                if event.key == pygame.K_RIGHT:
+                elif event.key == pygame.K_RIGHT:
                     move(hero, 'right')
-                if event.key == pygame.K_LEFT:
+                elif event.key == pygame.K_LEFT:
                     move(hero, 'left')
         screen.fill(pygame.Color('black'))
         sprites.draw(screen)
