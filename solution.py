@@ -42,8 +42,8 @@ class SpriteGroup(pygame.sprite.Sprite):
         super().__init__()
 
     def get_event(self, event):
-        for inet in self:
-            inet.get_event(event)
+        for el in self:
+            el.get_event(event)
 
 
 class Sprite(pygame.sprite.Sprite):
