@@ -21,8 +21,8 @@ def load_image(name, color_key=None):
 pygame.init()
 size = width, height = 500, 500
 screen = pygame.display.set_mode(size)
-sprite_group = pygame.sprite.Group()
-hero_group = pygame.sprite.Group()
+sprites = pygame.sprite.Group()
+heros = pygame.sprite.Group()
 
 tile_image = {'wall': load_image('box.png'),
               'empty': load_image('grass.png')}
@@ -42,8 +42,8 @@ class SpriteGroup(pygame.sprite.Sprite):
         super().__init__()
 
     def get_event(self, event):
-        for el in self:
-            el.get_event(event)
+        for inet in self:
+            inet.get_event(event)
 
 
 class Sprite(pygame.sprite.Sprite):
@@ -54,14 +54,14 @@ class Sprite(pygame.sprite.Sprite):
 
 class Tile(Sprite):
     def __init__(self, tile_type, pos_x, pos_y):
-        super().__init__(sprite_group)
+        super().__init__(sprites)
         self.image = tile_image[tile_type]
         self.rect = self.image.get_rect().move(tile_width * pos_x, tile_height * pos_y)
 
 
 class Player(Sprite):
     def __init__(self, pos_x, pos_y):
-        super().__init__(hero_group)
+        super().__init__(heros)
         self.image = player_image
         self.rect = self.image.get_rect().move(
             tile_width * pos_x + 15, tile_height * pos_y + 5)
@@ -162,7 +162,7 @@ if __name__ == '__main__':
                 if event.key == pygame.K_LEFT:
                     move(hero, 'left')
         screen.fill(pygame.Color('black'))
-        sprite_group.draw(screen)
-        hero_group.draw(screen)
+        sprites.draw(screen)
+        heros.draw(screen)
         pygame.display.flip()
     pygame.quit()
