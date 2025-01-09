@@ -144,14 +144,14 @@ def move(hero, mv):
 if __name__ == '__main__':
     pygame.display.set_caption('Марио')
     player = None
-    ranning = True
+    running = True
     start_screen()
     level_map = load_level('map.txt')
     hero, max_x, max_y = generate_level(level_map)
-    while ranning:
+    while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                ranning = False
+                running = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
                     move(hero, 'up')
